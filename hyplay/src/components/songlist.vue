@@ -2,7 +2,7 @@
   <div class="result-wrapper" v-if="songlist!=[]">
     <div class="song" v-for="(item, index) in songlist" :key="index" @dblclick="goComment(item.id)">
       <div class="name">
-        <span class="iconfont icon-play"></span>
+        <span class="iconfont icon-play" @click="goPlay(item.id)"></span>
         {{item.name}}
         <span class="iconfont icon-editmedia" v-if="item.mvid!=0" @click="goMv(item.mvid)"></span>
       </div>
@@ -85,6 +85,9 @@ export default {
           mvid:mvid
         }
       })
+    },
+    goPlay(id){
+      this.$router.push('/playsong?id='+id);
     }
   },
 };
