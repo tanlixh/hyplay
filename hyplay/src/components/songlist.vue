@@ -4,7 +4,7 @@
       <div class="name">
         <span class="iconfont icon-play"></span>
         {{item.name}}
-        <span class="iconfont icon-editmedia" v-if="item.mvid!=0"></span>
+        <span class="iconfont icon-editmedia" v-if="item.mvid!=0" @click="goMv(item.mvid)"></span>
       </div>
       <div class="singer">{{item.artists|formatAr}}</div>
       <div class="album">《{{item.album.name}}》</div>
@@ -75,6 +75,14 @@ export default {
         path:'/comment',
         query:{
           id
+        }
+      })
+    },
+    goMv(mvid){
+      this.$router.push({
+        path:'/playmv',
+        query:{
+          mvid:mvid
         }
       })
     }
