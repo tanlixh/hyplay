@@ -1,6 +1,6 @@
 <template>
   <div class="result-wrapper" v-if="songlist!=[]">
-    <div class="song" v-for="(item, index) in songlist" :key="index">
+    <div class="song" v-for="(item, index) in songlist" :key="index" @dblclick="goComment(item.id)">
       <div class="name">
         <span class="iconfont icon-play"></span>
         {{item.name}}
@@ -68,7 +68,17 @@ export default {
       var _s = "000" + Math.ceil((str / 1000) % 60);
       return _m.slice(-2) + ":" + _s.slice(-2);
     }
-  }
+  },
+  methods: {
+    goComment(id){
+      this.$router.push({
+        path:'/comment',
+        query:{
+          id
+        }
+      })
+    }
+  },
 };
 </script>
 
